@@ -1,14 +1,27 @@
+import _ from 'lodash';
 
-var _ = require('lodash');
+function userList(users) {
 
-function userList(users){
-    const container = document.getElementById('root');
+    const container = document.querySelector('#userTable tbody');
     const sortedUsers = _.sortBy(users, 'age');
     this.showList = () => {
         sortedUsers.forEach((user) => {
-            const div = document.createElement("div");
-            div.append(user.name + ' ' + user.age);
-            container.appendChild(div);
+            const tr = document.createElement("tr");
+            _.map(user, (el, key) => {
+                const td = document.createElement("td");
+
+                if (key === 'avatar'){
+                    const img = document.createElement("img");
+                    img.src = el;
+                    td.append(img);
+                }else{
+                    td.append(el);
+                }
+
+                tr.appendChild(td);
+                container.appendChild(tr);
+            })
+
         });
     }
 }
