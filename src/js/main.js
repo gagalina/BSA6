@@ -1,9 +1,8 @@
 import '../css/style.sass';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import pug from '../../pug.jpg';
-
-let file = require('./file');
-let userList = require('./userList.js');
+import userFunction from './file';
+import userList from './userList';
 
 
 const users = [
@@ -19,7 +18,7 @@ const users = [
 ];
 
 
-file();
+userFunction();
 
 let userListModule = new userList(users);
 userListModule.showList();
